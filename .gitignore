@@ -1,0 +1,8 @@
+
+*.xcscheme
+
+*.xcworkspacedata
+
+*.xcuserstate
+
+*.plist
