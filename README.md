@@ -6,7 +6,7 @@ I created this project after seeing Microsoft's Async/Await API and decided to m
 See: https://msdn.microsoft.com/en-us/library/vstudio/hh191443(v=vs.110).aspx
 
 Example:
-```
+```swift
 func asyncMultiply(a: Int, b: Int) -> Task<Int> { // return type must be specified (i.e. Int)
   return Async {
     // anything in here will be executed asyncronously
