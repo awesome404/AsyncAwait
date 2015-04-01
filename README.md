@@ -14,7 +14,7 @@ func asyncMultiply(a: Int, b: Int) -> Task<Int> { // return type must be specifi
   }
 }
 
-let task = asyncMultiply(101, 4) // Create an execute an asyncronous task
+let task = asyncMultiply(101, 4) // Create and execute an asyncronous task
 
 // Do other tasks here
 println("Waiting...")
