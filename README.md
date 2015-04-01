@@ -1,5 +1,5 @@
 # AsyncAwait
-A simple ascyncronous API class written in Swift.
+A simple ascyncronous API written in Swift.
 
 I created this project after seeing Microsoft's Async/Await API and decided to make a simple version of it in Swift. It isn't by far a complete copy, but the basic funcitonality is there.
 
