@@ -7,10 +7,10 @@ See: https://msdn.microsoft.com/en-us/library/vstudio/hh191443(v=vs.110).aspx
 
 Example:
 ```
-func asyncMultiply(aInt: Int, bInt: Int) -> Task<Int> { // return type must be specified (i.e. Int)
+func asyncMultiply(a: Int, b: Int) -> Task<Int> { // return type must be specified (i.e. Int)
   return Async {
     // anything in here will be executed asyncronously
-    return aInt * bInt
+    return a * b
   }
 }
 
