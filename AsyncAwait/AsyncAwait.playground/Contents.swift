@@ -17,23 +17,20 @@ print(result1)
 //: A simple example of a function instead of inline
 // there is no async keyword anywhere, but you could put it in your funciton name
 
-func asyncMultiply(aInt: Int, bInt: Int) -> Task<Int> { // the type must be specified in this case
+func asyncMultiply(aInt: Int,_ bInt: Int) -> Task<Int> { // the type must be specified in this case
     return Async {
         return aInt * bInt // return value will not infer the type
     }
 }
 
-let task2 = asyncMultiply(101, bInt: 4)
+let task2 = asyncMultiply(101, 4)
 
 print("Waiting...")
 
 let result2 = Await(task2)
 print(result2)
 
-
 //: An example where it actually does something
-
-
 
 let task3 = sleep(2)
 
@@ -41,7 +38,6 @@ print("Waiting...")
 
 let result3 = Await(task3)
 print(result3)
-
 
 //: an example with a timeout
 
