@@ -69,6 +69,7 @@ public func Await<T>(task: Task<T>) -> T {
         result = task.result
         task.result = nil // clear the result so it can only get the result once, twice will always return nil
     }
+    assert(result != nil)
     return result!
 }
 
