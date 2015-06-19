@@ -69,7 +69,7 @@ Wait or retrieve a result of a task with a timeout.
 (If timeout happens, the task can Await again.)
 
 - parameter task: Task object created by Async.
-- parameter timeout: Milliseconds after the task is abandoned. (Default is never abandoned)
+- parameter timeout: Milliseconds after the task is abandoned.
 - returns: Result of the task or nil if it timed out.
 */
 public func Await<T>(task: Task<T>, timeout: Int) -> T? {
