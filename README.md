@@ -17,8 +17,8 @@ func asyncMultiply(a: Int, b: Int) -> Task<Int> { // return type must be specifi
 let task = asyncMultiply(101, 4) // Create and execute an asyncronous task
 
 // Do other tasks here
-println("Waiting...")
+print("Waiting...")
 
 let result = Await(task) // Wait for the task to finish. Result will be Int?
-println(result) // Optional(404)
+print(result) // Optional(404)
 ```
