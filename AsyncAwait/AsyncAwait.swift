@@ -43,9 +43,9 @@ public class Task<T> {
 Create and execute an asynchronous task.
 (Just a simple wrapper, but Task.init() is hidden)
 
-:param: priority Priority to run the task at.
-:param: call The task to execute asynchronously.
-:returns: Task object to be used in Await().
+- parameter priority: Priority to run the task at.
+- parameter call: The task to execute asynchronously.
+- returns: Task object to be used in Await().
 */
 public func Async<T>(priority: Priority = .Default, call: Void -> T) -> Task<T> {
     return Task(priority: priority, call: call)
@@ -54,8 +54,8 @@ public func Async<T>(priority: Priority = .Default, call: Void -> T) -> Task<T> 
 /**
 Wait or retrieve a result of a task.
 
-:param: task Task object created by Async.
-:returns: Result of the task or nil if it timed out.
+- parameter task: Task object created by Async.
+- returns: Result of the task or nil if it timed out.
 */
 public func Await<T>(task: Task<T>) -> T {
     dispatch_group_wait(task.group, DISPATCH_TIME_FOREVER)
@@ -68,11 +68,11 @@ public func Await<T>(task: Task<T>) -> T {
 Wait or retrieve a result of a task with a timeout.
 (If timeout happens, the task can Await again.)
 
-:param: task Task object created by Async.
-:param: timeout Milliseconds after the task is abandoned. (Default is never abandoned)
-:returns: Result of the task or nil if it timed out.
+- parameter task: Task object created by Async.
+- parameter timeout: Milliseconds after the task is abandoned. (Default is never abandoned)
+- returns: Result of the task or nil if it timed out.
 */
-public func Await<T>(task: Task<T>, #timeout: Int) -> T? {
+public func Await<T>(task: Task<T>, timeout: Int) -> T? {
     let nanotimeout: UInt64 = UInt64(timeout) * 1000000
     dispatch_group_wait(task.group, nanotimeout)
     let result = task.result

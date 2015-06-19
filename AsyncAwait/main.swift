@@ -10,7 +10,7 @@ import Foundation
 
 func scope() { // to avoid lazy initialization of globals.
 
-    println("AsyncAwait")
+    print("AsyncAwait")
 
 // A very basic example for inline use
 
@@ -18,10 +18,10 @@ func scope() { // to avoid lazy initialization of globals.
         "Simple Test" // the return value infers the type here, but elsewhere it has to be statically typed
     }
 
-    println("Waiting...")
+    print("Waiting...")
 
     let result1 = Await(task1)
-    println(result1)
+    print(result1)
 
 
 // A simple example of a function instead of inline
@@ -33,12 +33,12 @@ func scope() { // to avoid lazy initialization of globals.
         }
     }
 
-    let task2 = asyncMultiply(101, 4)
+    let task2 = asyncMultiply(101, bInt: 4)
 
-    println("Waiting...")
+    print("Waiting...")
 
     let result2 = Await(task2)
-    println(result2)
+    print(result2)
 
 
 // An example where it actually does something
@@ -60,22 +60,22 @@ func scope() { // to avoid lazy initialization of globals.
 
     let task3 = sleep(2)
 
-    println("Waiting...")
+    print("Waiting...")
 
     let result3 = Await(task3)
-    println(result3)
+    print(result3)
 
     
 // an example with a timeout
 
     let task4 = sleep(3)
 
-    println("Waiting...")
+    print("Waiting...")
 
     if let result4 = Await(task4, timeout: 1000) {
-        println(result4) //never happens
+        print(result4) //never happens
     } else {
-        println("Timed out")
+        print("Timed out")
     }
 
     
@@ -85,18 +85,18 @@ func scope() { // to avoid lazy initialization of globals.
         return (5,"five")
     }
 
-    println("Waiting...")
+    print("Waiting...")
 
     let result5 = Await(task5)
-    println(result5)
+    print(result5)
 
     
 // Timeout example continued, because we can Await for it again if it timed out
 
-    println("Waiting...")
+    print("Waiting...")
     
     let result6 = Await(task4)
-    println(result6)
+    print(result6)
 
 }
 
