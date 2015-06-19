@@ -19,6 +19,6 @@ let task = asyncMultiply(101, 4) // Create and execute an asyncronous task
 // Do other tasks here
 print("Waiting...")
 
-let result = Await(task) // Wait for the task to finish. Result will be Int?
+let result = Await(task) // Wait for the task to finish. Result will be Int
 print(result) // Optional(404)
 ```
