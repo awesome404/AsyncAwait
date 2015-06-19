@@ -25,16 +25,21 @@ public enum Priority {
     }
 }
 
+private let serialQueue = dispatch_queue_create(nil,DISPATCH_QUEUE_SERIAL)
+
 /// An asynchronous task.
 public class Task<T> {
     
     private let group: dispatch_group_t
-    private var result: T? = nil // this really needs protection
+    private var result: T? = nil
     
     private init(priority: Priority, call: Void -> T) {
         group = dispatch_group_create()
         dispatch_group_async(group, priority.queue) {
-            self.result = call()
+            let result = call()
+            dispatch_async(serialQueue) {
+                self.result = result
+            }
         }
     }
 }
@@ -59,8 +64,11 @@ Wait or retrieve a result of a task.
 */
 public func Await<T>(task: Task<T>) -> T {
     dispatch_group_wait(task.group, DISPATCH_TIME_FOREVER)
-    let result = task.result
-    task.result = nil // clear the result so it can only get the result once, twice will always return nil
+    var result: T? = nil
+    dispatch_async(serialQueue) {
+        result = task.result
+        task.result = nil // clear the result so it can only get the result once, twice will always return nil
+    }
     return result!
 }
 
@@ -75,7 +83,10 @@ Wait or retrieve a result of a task with a timeout.
 public func Await<T>(task: Task<T>, timeout: Int) -> T? {
     let nanotimeout: UInt64 = UInt64(timeout) * 1000000
     dispatch_group_wait(task.group, nanotimeout)
-    let result = task.result
-    task.result = nil // clear the result so it can only get the result once, twice will always return nil
+    var result: T? = nil
+    dispatch_async(serialQueue) {
+        result = task.result
+        task.result = nil // clear the result so it can only get the result once, twice will always return nil
+    }
     return result
 }
