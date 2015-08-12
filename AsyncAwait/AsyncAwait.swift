@@ -37,7 +37,7 @@ public class Task<T> {
     private init(priority: Priority, call: Void -> T) {
         dispatch_group_async(group, priority.queue) {
             let result = call()
-            dispatch_async(serialQueue) { // protect the result
+            dispatch_sync(serialQueue) { // protect the result
                 self.result = result
             }
         }
@@ -65,7 +65,7 @@ Wait or retrieve a result of a task.
 public func Await<T>(task: Task<T>) -> T {
     dispatch_group_wait(task.group, DISPATCH_TIME_FOREVER)
     var result: T? = nil
-    dispatch_async(serialQueue) { // protect the result
+    dispatch_sync(serialQueue) { // protect the result
         result = task.result
         task.result = nil // clear the result so it can only get the result once, twice will always return nil
     }
@@ -85,7 +85,7 @@ public func Await<T>(task: Task<T>, timeout: Int) -> T? {
     let nanotimeout: UInt64 = UInt64(timeout) * 1000000
     dispatch_group_wait(task.group, nanotimeout)
     var result: T? = nil
-    dispatch_async(serialQueue) { // protect the result
+    dispatch_sync(serialQueue) { // protect the result
         result = task.result
         task.result = nil // clear the result so it can only get the result once, twice will always return nil
     }
