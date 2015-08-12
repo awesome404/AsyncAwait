@@ -14,7 +14,7 @@ public enum Priority {
     
     // internal variable to get the proper queue
     private var queue: dispatch_queue_t {
-        var indentifier = 0
+        var indentifier = DISPATCH_QUEUE_PRIORITY_DEFAULT
         switch self {
         case .High:       indentifier = DISPATCH_QUEUE_PRIORITY_HIGH
         case .Low:        indentifier = DISPATCH_QUEUE_PRIORITY_LOW
@@ -25,9 +25,10 @@ public enum Priority {
     }
 }
 
+// Internal serial queue to protect the results from getting squashed.
 private let serialQueue = dispatch_queue_create(nil,DISPATCH_QUEUE_SERIAL)
 
-/// An asynchronous task.
+/// An asynchronous task container. This is created by Async and evaluated by Await.
 public class Task<T> {
     
     private let group: dispatch_group_t
@@ -37,7 +38,7 @@ public class Task<T> {
         group = dispatch_group_create()
         dispatch_group_async(group, priority.queue) {
             let result = call()
-            dispatch_async(serialQueue) {
+            dispatch_async(serialQueue) { // protect the result
                 self.result = result
             }
         }
@@ -65,7 +66,7 @@ Wait or retrieve a result of a task.
 public func Await<T>(task: Task<T>) -> T {
     dispatch_group_wait(task.group, DISPATCH_TIME_FOREVER)
     var result: T? = nil
-    dispatch_async(serialQueue) {
+    dispatch_async(serialQueue) { // protect the result
         result = task.result
         task.result = nil // clear the result so it can only get the result once, twice will always return nil
     }
@@ -85,7 +86,7 @@ public func Await<T>(task: Task<T>, timeout: Int) -> T? {
     let nanotimeout: UInt64 = UInt64(timeout) * 1000000
     dispatch_group_wait(task.group, nanotimeout)
     var result: T? = nil
-    dispatch_async(serialQueue) {
+    dispatch_async(serialQueue) { // protect the result
         result = task.result
         task.result = nil // clear the result so it can only get the result once, twice will always return nil
     }
