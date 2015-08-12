@@ -14,8 +14,7 @@ let result1 = Await(task1)
 print(result1)
 
 
-//: A simple example of a function instead of inline
-// there is no async keyword anywhere, but you could put it in your funciton name
+//: A simple example of a function instead of inline.
 
 func asyncMultiply(aInt: Int,_ bInt: Int) -> Task<Int> { // the type must be specified in this case
     return Async {
@@ -30,18 +29,24 @@ print("Waiting...")
 let result2 = Await(task2)
 print(result2)
 
-//: An example where it actually does something
+//: An example that actually has to wait.
 
-let task3 = hackSleep(2)
+let task3 = Async { () -> String in
+    sleep(2)
+    return "Slept for 2 seconds."
+}
 
 print("Waiting...")
 
 let result3 = Await(task3)
 print(result3)
 
-//: an example with a timeout
+//: An example with a timeout.
 
-let task4 = hackSleep(3)
+let task4 = Async { () -> String in
+    sleep(3)
+    return "Slept for 3 seconds"
+}
 
 print("Waiting...")
 
@@ -53,7 +58,7 @@ if let result4 = Await(task4, timeout: 1000) {
 
 //: An example with a tuple
 
-let task5 = Async { () -> (Int,String) in // statically typed
+let task5 = Async { () -> (Int,String) in
     return (5,"five")
 }
 
@@ -68,20 +73,3 @@ print("Waiting...")
 
 let result6 = Await(task4)
 print(result6)
-
-//: Hacks
-
-func hackSleep(seconds: Int) -> Task<String> {
-    return Async {
-        // hack together a sleep method.
-        let group = dispatch_group_create()
-        let when = dispatch_time(DISPATCH_TIME_NOW, 1000000000 * Int64(seconds))
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0)
-        dispatch_group_enter(group)
-        dispatch_after(when, queue) {
-            dispatch_group_leave(group)
-        }
-        dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
-        return "\(seconds) seconds have passed"
-    }
-}
