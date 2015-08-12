@@ -56,7 +56,7 @@ if let result4 = Await(task4, timeout: 1000) {
     print("Timed out")
 }
 
-//: An example with a tuple
+//: An example with a tuple.
 
 let task5 = Async { () -> (Int,String) in
     return (5,"five")
@@ -67,9 +67,11 @@ print("Waiting...")
 let result5 = Await(task5)
 print(result5)
 
-//: Timeout example continued, because we can Await for it again if it timed out
+//: Timeout example continued, because we can Await for it again if it timed out.
 
 print("Waiting...")
 
 let result6 = Await(task4)
 print(result6)
+
+//: End.
