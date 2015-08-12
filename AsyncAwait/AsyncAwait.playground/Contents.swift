@@ -32,7 +32,7 @@ print(result2)
 
 //: An example where it actually does something
 
-let task3 = sleep(2)
+let task3 = hackSleep(2)
 
 print("Waiting...")
 
@@ -41,7 +41,7 @@ print(result3)
 
 //: an example with a timeout
 
-let task4 = sleep(3)
+let task4 = hackSleep(3)
 
 print("Waiting...")
 
@@ -71,7 +71,7 @@ print(result6)
 
 //: Hacks
 
-func sleep(seconds: Int) -> Task<String> {
+func hackSleep(seconds: Int) -> Task<String> {
     return Async {
         // hack together a sleep method.
         let group = dispatch_group_create()
