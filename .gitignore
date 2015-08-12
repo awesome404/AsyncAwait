@@ -6,3 +6,5 @@
 *.xcuserstate
 
 *.plist
+
+*.xcbkptlist
