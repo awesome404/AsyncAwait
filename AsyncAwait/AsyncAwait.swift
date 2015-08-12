@@ -31,11 +31,10 @@ private let serialQueue = dispatch_queue_create(nil,DISPATCH_QUEUE_SERIAL)
 /// An asynchronous task container. This is created by Async and evaluated by Await.
 public class Task<T> {
     
-    private let group: dispatch_group_t
+    private let group = dispatch_group_create()
     private var result: T? = nil
     
     private init(priority: Priority, call: Void -> T) {
-        group = dispatch_group_create()
         dispatch_group_async(group, priority.queue) {
             let result = call()
             dispatch_async(serialQueue) { // protect the result
