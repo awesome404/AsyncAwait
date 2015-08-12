@@ -22,3 +22,5 @@ print("Waiting...")
 let result = Await(task) // Wait for the task to finish. Result will be Int
 print(result) // 404
 ```
+
+See the playground for more examples.
