@@ -60,14 +60,13 @@ public func Async<T>(priority: Priority = .Default, call: Void -> T) -> Task<T> 
 Wait or retrieve a result of a task.
 
 - parameter task: Task object created by Async.
-- returns: Result of the task or nil if it timed out.
+- returns: Result of the task.
 */
 public func Await<T>(task: Task<T>) -> T {
-    dispatch_group_wait(task.group, DISPATCH_TIME_FOREVER)
+    dispatch_group_wait(task.group, DISPATCH_TIME_FOREVER) // wait for it...
     var result: T? = nil
     dispatch_sync(serialQueue) { // protect the result
         result = task.result
-        task.result = nil // clear the result so it can only get the result once, twice will always return nil
     }
     assert(result != nil)
     return result!
@@ -82,12 +81,11 @@ Wait or retrieve a result of a task with a timeout.
 - returns: Result of the task or nil if it timed out.
 */
 public func Await<T>(task: Task<T>, timeout: Int) -> T? {
-    let nanotimeout: UInt64 = UInt64(timeout) * 1000000
-    dispatch_group_wait(task.group, nanotimeout)
+    let nanotimeout: UInt64 = UInt64(timeout) * 1000000 // prepare the timeout
+    dispatch_group_wait(task.group, nanotimeout) // wait for it...
     var result: T? = nil
     dispatch_sync(serialQueue) { // protect the result
         result = task.result
-        task.result = nil // clear the result so it can only get the result once, twice will always return nil
     }
     return result
 }
