@@ -5,6 +5,6 @@
 
 *.xcuserstate
 
-*.plist
-
 *.xcbkptlist
+
+AsyncAwait.xcodeproj/xcuserdata/adam.xcuserdatad/xcschemes/xcschememanagement.plist
