@@ -1,10 +1,2 @@
-
-*.xcscheme
-
-*.xcworkspacedata
-
-*.xcuserstate
-
-*.xcbkptlist
-
-AsyncAwait.xcodeproj/xcuserdata/adam.xcuserdatad/xcschemes/xcschememanagement.plist
+AsyncAwait.xcodeproj/xcuserdata/*
+AsyncAwait.xcodeproj/project.xcworkspace/*
