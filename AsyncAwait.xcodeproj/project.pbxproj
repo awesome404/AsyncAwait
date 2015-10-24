@@ -8,28 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6674D30F1B33AC670056F8B2 /* AsyncAwait.h in Headers */ = {isa = PBXBuildFile; fileRef = 6674D30E1B33AC670056F8B2 /* AsyncAwait.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6674D3161B33AC670056F8B2 /* AsyncAwait.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674D30B1B33AC670056F8B2 /* AsyncAwait.framework */; };
-		6674D31B1B33AC670056F8B2 /* AsyncAwaitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674D31A1B33AC670056F8B2 /* AsyncAwaitTests.swift */; };
 		6674D3261B33ACB10056F8B2 /* AsyncAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674D3251B33ACB10056F8B2 /* AsyncAwait.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6674D3171B33AC670056F8B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6674D3021B33AC670056F8B2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6674D30A1B33AC670056F8B2;
-			remoteInfo = AsyncAwait;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6674D30B1B33AC670056F8B2 /* AsyncAwait.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncAwait.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6674D30E1B33AC670056F8B2 /* AsyncAwait.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncAwait.h; sourceTree = "<group>"; };
 		6674D3101B33AC670056F8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6674D3151B33AC670056F8B2 /* AsyncAwaitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsyncAwaitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6674D31A1B33AC670056F8B2 /* AsyncAwaitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitTests.swift; sourceTree = "<group>"; };
-		6674D31C1B33AC670056F8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6674D3251B33ACB10056F8B2 /* AsyncAwait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncAwait.swift; sourceTree = "<group>"; };
 		6674D3271B33ACC50056F8B2 /* AsyncAwait.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AsyncAwait.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -42,14 +27,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6674D3121B33AC670056F8B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6674D3161B33AC670056F8B2 /* AsyncAwait.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -57,7 +34,6 @@
 			isa = PBXGroup;
 			children = (
 				6674D30D1B33AC670056F8B2 /* AsyncAwait */,
-				6674D3191B33AC670056F8B2 /* AsyncAwaitTests */,
 				6674D30C1B33AC670056F8B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,7 +42,6 @@
 			isa = PBXGroup;
 			children = (
 				6674D30B1B33AC670056F8B2 /* AsyncAwait.framework */,
-				6674D3151B33AC670056F8B2 /* AsyncAwaitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,15 +55,6 @@
 				6674D3271B33ACC50056F8B2 /* AsyncAwait.playground */,
 			);
 			path = AsyncAwait;
-			sourceTree = "<group>";
-		};
-		6674D3191B33AC670056F8B2 /* AsyncAwaitTests */ = {
-			isa = PBXGroup;
-			children = (
-				6674D31A1B33AC670056F8B2 /* AsyncAwaitTests.swift */,
-				6674D31C1B33AC670056F8B2 /* Info.plist */,
-			);
-			path = AsyncAwaitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,24 +89,6 @@
 			productReference = 6674D30B1B33AC670056F8B2 /* AsyncAwait.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6674D3141B33AC670056F8B2 /* AsyncAwaitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6674D3221B33AC670056F8B2 /* Build configuration list for PBXNativeTarget "AsyncAwaitTests" */;
-			buildPhases = (
-				6674D3111B33AC670056F8B2 /* Sources */,
-				6674D3121B33AC670056F8B2 /* Frameworks */,
-				6674D3131B33AC670056F8B2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6674D3181B33AC670056F8B2 /* PBXTargetDependency */,
-			);
-			name = AsyncAwaitTests;
-			productName = AsyncAwaitTests;
-			productReference = 6674D3151B33AC670056F8B2 /* AsyncAwaitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -152,9 +100,6 @@
 				ORGANIZATIONNAME = "Adam Dann";
 				TargetAttributes = {
 					6674D30A1B33AC670056F8B2 = {
-						CreatedOnToolsVersion = 7.0;
-					};
-					6674D3141B33AC670056F8B2 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
@@ -172,20 +117,12 @@
 			projectRoot = "";
 			targets = (
 				6674D30A1B33AC670056F8B2 /* AsyncAwait */,
-				6674D3141B33AC670056F8B2 /* AsyncAwaitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6674D3091B33AC670056F8B2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6674D3131B33AC670056F8B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -203,23 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6674D3111B33AC670056F8B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6674D31B1B33AC670056F8B2 /* AsyncAwaitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6674D3181B33AC670056F8B2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6674D30A1B33AC670056F8B2 /* AsyncAwait */;
-			targetProxy = 6674D3171B33AC670056F8B2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6674D31D1B33AC670056F8B2 /* Debug */ = {
@@ -345,28 +266,6 @@
 			};
 			name = Release;
 		};
-		6674D3231B33AC670056F8B2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AsyncAwaitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nullriver.AsyncAwaitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		6674D3241B33AC670056F8B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AsyncAwaitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nullriver.AsyncAwaitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -384,15 +283,6 @@
 			buildConfigurations = (
 				6674D3201B33AC670056F8B2 /* Debug */,
 				6674D3211B33AC670056F8B2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6674D3221B33AC670056F8B2 /* Build configuration list for PBXNativeTarget "AsyncAwaitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6674D3231B33AC670056F8B2 /* Debug */,
-				6674D3241B33AC670056F8B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
